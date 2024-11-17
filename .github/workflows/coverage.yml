@@ -1,13 +1,12 @@
 on: ["push", "pull_request"]
 
-name: Test Coveralls
+name: Test & Coveralls
 
 jobs:
   build:
-    name: Build
+    name: Test & Coveralls
     runs-on: ubuntu-latest
     steps:
-
     - uses: actions/checkout@v4
 
     - name: Use Node.js 16
@@ -15,10 +14,11 @@ jobs:
       with:
         node-version: 16
 
-    - name: npm install
-      run: |
-        npm install
-        npm run coveralls
+    - name: Install dependencies
+      run: npm install
+
+    - name: Generate coverage report
+      run: npm run coveralls
 
     - name: Coveralls
       uses: coverallsapp/github-action@v2
