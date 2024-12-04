@@ -3,7 +3,7 @@ on: ["push", "pull_request"]
 name: Test & Coveralls
 
 jobs:
-  build:
+  test-and-coveralls:
     name: Test & Coveralls
     runs-on: ubuntu-latest
     steps:
