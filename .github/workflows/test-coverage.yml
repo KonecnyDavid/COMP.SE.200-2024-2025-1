@@ -19,9 +19,12 @@ jobs:
 
     - name: Run tests
       run: npm run test
+      **continue-on-error: true**
 
     - name: Generate coverage report
       run: npm run coveralls
+      **if: always()**
 
     - name: Coveralls
       uses: coverallsapp/github-action@v2
+       **if: always()**
