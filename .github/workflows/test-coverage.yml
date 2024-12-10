@@ -4,7 +4,7 @@ name: Test & Coveralls
 
 jobs:
   test-and-coveralls:
-    name: Test & Coveralls
+    name: Coveralls
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -19,12 +19,23 @@ jobs:
 
     - name: Run tests
       run: npm run test
-      **continue-on-error: true**
 
+  coveralls:
+    name: Coveralls
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Install dependencies
+      run: npm install
+      
     - name: Generate coverage report
       run: npm run coveralls
-      **if: always()**
 
     - name: Coveralls
       uses: coverallsapp/github-action@v2
-       **if: always()**
